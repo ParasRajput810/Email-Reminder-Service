@@ -22,7 +22,7 @@ const fetchtickets = async(data)=>{
                     }
                 }
             ) } );
-           
+           console.log("Email sended");
         }catch (error) {
             console.log(error);
         }

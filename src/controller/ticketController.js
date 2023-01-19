@@ -1,4 +1,4 @@
-const {ticketCreate} = require("../services/email-service");
+const {ticketCreate , deleteTicket} = require("../services/email-service");
 
 const createTicket = async(req,res)=>{
     
@@ -20,4 +20,24 @@ const createTicket = async(req,res)=>{
     }
 }
 
-module.exports = {createTicket};
+const deleteNotification = async(req,res) =>{
+    console.log(req.query);
+    try {
+        const response = await deleteTicket(req.query.id);
+        return res.status(201).json({
+            data:response,
+            success : true,
+            message : "Deleted entry successfully",
+            err : {}
+        })
+    } catch (error) {
+        return res.status(501).json({
+            data: {},
+            err : error,
+            success : false,
+            message:"Notification ticket deletion failed"
+        })
+    }
+}
+
+module.exports = {createTicket , deleteNotification};

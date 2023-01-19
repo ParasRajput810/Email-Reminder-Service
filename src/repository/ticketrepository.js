@@ -44,6 +44,16 @@ class Ticketrepository{
             throw {error}; 
         }
     }
+    async deleteticket(ticketid){
+        try {
+            await NotificationTicket.destroy({where:{
+                id : ticketid
+            }});
+            return true;
+        } catch (error) {
+            throw {error};
+        }
+    }
 }
 
 module.exports = Ticketrepository;

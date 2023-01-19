@@ -40,9 +40,19 @@ const updateticket = async(ticketid , data)=>{
     }
 }
 
+const deleteTicket = async(ticketid)=>{
+    try {
+        const response = await repo.deleteticket(ticketid);
+        return response;
+    } catch (error) {
+        throw {error};
+    }
+}
+
 module.exports = {
     sendBasicMail,
     ticketCreate,
     fetchTicket,
-    updateticket
+    updateticket,
+    deleteTicket
 };
